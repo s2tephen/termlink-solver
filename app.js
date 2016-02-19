@@ -72,12 +72,13 @@ var TermlinkApp = React.createClass({
     e.target.parentNode.previousSibling.previousSibling.focus();
   },
 
-  setActiveWord: function(word) {
+  setActiveWord: function(word, e) {
     if (this.state.mode == 1)
       if (word === this.state.activeWord)
         this.setState({activeWord: ''});
       else
         this.setState({activeWord: word});
+    e.target.parentNode.nextSibling.childNodes[1].focus();
   },
 
   render: function() {
