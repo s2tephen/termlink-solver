@@ -153,9 +153,12 @@ hr {
   50% { opacity: 0; }
 }
 
-.mode-switch,
-.mode-reset {
+.word-buttons {
   float: right;
+}
+
+.word-buttons > button {
+  float: left;
   padding: 0;
   margin-left: 1em;
   font-family: "Oxygen Mono";
@@ -168,9 +171,12 @@ hr {
   border: 0;
 }
 
-.mode-switch:hover,
-.mode-reset:hover {
+.word-buttons > button:hover {
   color: rgb(17,25,17);
   background: rgb(0,255,0);
   cursor: pointer;
+}
+
+.word-buttons > button:focus {
+  outline: none;
 }
