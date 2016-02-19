@@ -9,7 +9,7 @@ var TermlinkApp = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    e.target.childNodes[1].focus();
+    e.target.childNodes[2].focus();
 
     if (this.state.mode === 0) { // input mode
       var sanitizedWord = this.state.inputValue.replace(/[^A-Za-z]/g, '').toLowerCase();
@@ -54,7 +54,7 @@ var TermlinkApp = React.createClass({
     }
   },
 
-  handleFocus: function() {
+  handleFocus: function(e) {
     this.setState({typing: true});
   },
 
@@ -78,21 +78,24 @@ var TermlinkApp = React.createClass({
         this.setState({activeWord: ''});
       else
         this.setState({activeWord: word});
-    e.target.parentNode.nextSibling.childNodes[1].focus();
+    e.target.parentNode.parentNode.nextSibling.childNodes[2].focus();
   },
 
   render: function() {
     return (
-      <div className="container">
-        <p>Welcome to ROBCO Industries (TM) Termlink Solver</p>
-        <hr />
-        <p>1) Input the candidate words displayed on your Termlink (press ENTER after each one)</p>
-        <p>2) Press the START button to begin guessing</p>
-        <p>3) Click the word you guessed and input the Likeness score (press ENTER to confirm)</p>
-        <p>4) Repeat step 3 as necessary</p>
-        <hr />
-        <WordList words={this.state.words} mode={this.state.mode} activeWord={this.state.activeWord} setActiveWord={this.setActiveWord} />
+      <div class="container">
+        <div class="content">
+          <p>Welcome to ROBCO Industries (TM) Termlink Solver</p>
+          <hr />
+          <p>1) Input the candidate words displayed on your Termlink (press ENTER after each one)</p>
+          <p>2) Press the START button to begin guessing</p>
+          <p>3) Click the word you guessed and input the Likeness score (press ENTER to confirm)</p>
+          <p>4) Repeat step 3 as necessary</p>
+          <hr />
+          <WordList words={this.state.words} mode={this.state.mode} activeWord={this.state.activeWord} setActiveWord={this.setActiveWord} />
+        </div>
         <form className="word-cmdline" onSubmit={this.handleSubmit}>
+          <hr />
           <div className="word-start">{this.state.mode == 0 ? '>' : '>Likeness='}</div>
           <input className="word-entry" type="text" value={this.state.inputValue} maxLength={this.state.maxLength} onChange={this.handleChange} onKeyUp={this.handleKeyUp} onFocus={this.handleFocus} onBlur={this.handleBlur} autoFocus />
           <div className="word-caret" style={{marginLeft: (-10.5 + this.state.inputValue.length * .7) + 'em', display: this.state.typing ? 'block' : 'none'}}>&nbsp;</div>
