@@ -1,9 +1,50 @@
-html {
+html, body {
   width: 100%;
   height: 100%;
 }
 
 body {
+  background-color: rgb(17,25,17);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,255,0,.01);
+  background-image: linear-gradient(transparent 15%, rgba(0,0,0,.15) 15%);
+  background-size: 15px 15px;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-animation: scanline .5s infinite linear;
+     -moz-animation: scanline .5s infinite linear;
+       -o-animation: scanline .5s infinite linear;
+          animation: scanline .5s infinite linear;
+}
+
+@-webkit-keyframes scanline {
+  0% { top: 0; }
+  100% { top: 20px; }
+}
+
+@-moz-keyframes scanline {
+  0% { top: 0; }
+  100% { top: 20px; }
+}
+
+@-o-keyframes scanline {
+  0% { top: 0; }
+  100% { top: 20px; }
+}
+
+@keyframes scanline {
+  0% { top: 0; }
+  100% { top: 20px; }
+}
+
+#container {
   position: absolute;
   top: 0;
   left: 50%;
@@ -16,22 +57,21 @@ body {
   font-size: 1.6em;
   letter-spacing: .1em;
   color: rgb(0,255,0);
-  background-color: rgb(17,25,17);
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  body { width: 80%; }
+  #container { width: 80%; }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
-  body {
+  #container {
     width: 90%;
     font-size: 1.1em;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  body {
+  #container {
     width: 90%;
     font-size: .9em;
   }
@@ -40,6 +80,27 @@ body {
 .content {
   flex: 1;
 }
+
+.meta-byline,
+.meta-social {
+  letter-spacing: .1em;
+  color: rgb(0,255,0);
+}
+
+.meta-social {
+  float: right;
+  margin-left: .5em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.meta-byline:hover,
+.meta-social:hover {
+  text-decoration: none;
+  color: rgb(17,25,17);
+  background: rgb(0,255,0);
+}
+
 
 hr {
   border: 1px solid rgb(0,255,0);
