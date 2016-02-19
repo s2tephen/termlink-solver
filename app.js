@@ -88,8 +88,8 @@ var TermlinkApp = React.createClass({
           <p>Welcome to ROBCO Industries (TM) Termlink Solver for Fallout 3/NV/4</p>
           <p>
             by <a className="meta-byline" href="//twitter.com/s2tephen">@s2tephen</a>
-            <a className="meta-social" href="#">LIKE</a>
-            <a className="meta-social" href="#">TWEET</a>
+            <a className="meta-social" href="//facebook.com/sharer/sharer.php?app_id=361795653894146&sdk=joey&u=http://stephensuen.com/termlink-solver/&display=popup">SHARE</a>
+            <a className="meta-social" href="//twitter.com/intent/tweet?url=http://stephensuen.com/termlink-solver/&amp;text=ROBCO+Termlink+Solver">TWEET</a>
           </p>
           <hr />
           <p>1) Input the candidate words displayed on your Termlink (press ENTER after each one)</p>
