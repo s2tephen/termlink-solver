@@ -1,6 +1,6 @@
 var TermlinkApp = React.createClass({
   getInitialState: function() {
-    return {mode: 0, words: [], letters: 15, maxLength: 15, inputValue: '', activeWord: ''};
+    return {mode: 0, typing: true, words: [], letters: 15, maxLength: 15, inputValue: '', activeWord: ''};
   },
 
   handleChange: function(e) {
@@ -49,8 +49,12 @@ var TermlinkApp = React.createClass({
     }
   },
 
-  handleBlur: function(e) {
-    e.target.focus();
+  handleFocus: function() {
+    this.setState({typing: true});
+  },
+
+  handleBlur: function() {
+    this.setState({typing: false});
   },
 
   switchMode: function() {
@@ -58,7 +62,7 @@ var TermlinkApp = React.createClass({
   },
 
   resetMode: function() {
-    this.setState({mode: 0, words: [], letters: 15, maxLength: 15, inputValue: '', activeWord: ''});
+    this.setState({mode: 0, typing: true, words: [], letters: 15, maxLength: 15, inputValue: '', activeWord: ''});
   },
 
   setActiveWord: function(word) {
@@ -82,8 +86,8 @@ var TermlinkApp = React.createClass({
         <WordList words={this.state.words} mode={this.state.mode} activeWord={this.state.activeWord} setActiveWord={this.setActiveWord} />
         <div className="word-cmdline">
           <div className="word-start">{this.state.mode == 0 ? '>' : '>Likeness='}</div>
-          <input className="word-entry" type="text" value={this.state.inputValue} maxLength={this.state.maxLength} onChange={this.handleChange} onKeyUp={this.handleKeyUp} onBlur={this.handleBlur} autoFocus />
-          <div className="word-caret" style={{marginLeft: (-10.5 + this.state.inputValue.length * .7) + 'em'}}>&nbsp;</div>
+          <input className="word-entry" type="text" value={this.state.inputValue} maxLength={this.state.maxLength} onChange={this.handleChange} onKeyUp={this.handleKeyUp} onFocus={this.handleFocus} onBlur={this.handleBlur} autoFocus />
+          <div className="word-caret" style={{marginLeft: (-10.5 + this.state.inputValue.length * .7) + 'em', display: this.state.typing ? 'block' : 'none'}}>&nbsp;</div>
           <button className="mode-reset" onClick={this.resetMode}>Reset</button>
           <button className="mode-switch" onClick={this.switchMode} style={{ display: this.state.mode == 0 ? 'block' : 'none' }}>Start</button>
         </div>
@@ -99,7 +103,7 @@ var WordList = React.createClass({
         <li>Candidate Words:</li>
         {this.props.words.map(function(word) {
           var boundClick = this.props.setActiveWord.bind(this, word);
-          return <li className={word === this.props.activeWord ? 'word-guess word-guess--active' : 'word-guess'}  ={word.id} word={word} onClick={boundClick}>{word}</li>
+          return <li className={word === this.props.activeWord ? 'word-guess word-guess--active' : 'word-guess'} key={word.id} word={word} onClick={boundClick}>{word}</li>
         }, this)}
       </ul>
     );
