@@ -18,8 +18,6 @@ var TermlinkApp = React.createClass({
             this.setState({words: this.state.words.concat(this.state.inputValue), inputValue: ''});
         }
       }
-      else if (this.state.mode === 0 & (e.charCode < 97 || e.charCode > 122)) // alphabetic only
-        e.preventDefault();
     }
 
     else { // guess mode (v1: lazy method)
@@ -48,8 +46,6 @@ var TermlinkApp = React.createClass({
 
         this.setState({words: new_words, inputValue: '', activeWord: ''});
       }
-      else if (this.state.mode == 1 & (e.charCode < 48 || e.charCode > 57)) // numeric only
-        e.preventDefault();
     }
   },
 
