@@ -17,21 +17,21 @@ body {
   background-color: rgb(17,25,17);
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
   body { width: 80%; }
 }
 
-@media only screen and (min-device-width : 481px) and (max-device-width : 767px) {
+@media only screen and (min-width : 481px) and (max-width : 767px) {
   body {
     width: 90%;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 }
 
-@media only screen and (max-device-width : 480px) {
+@media only screen and (max-width : 480px) {
   body {
     width: 90%;
-    font-size: 2.4em;
+    font-size: .9em;
   }
 }
 
